@@ -5,10 +5,10 @@ import discord4j.core.object.command.ApplicationCommandInteractionOption;
 import discord4j.core.object.command.ApplicationCommandInteractionOptionValue;
 import reactor.core.publisher.Mono;
 
-public class GreetCommand implements SlashCommand {
+public class HelloCommand implements SlashCommand {
     @Override
     public String getName() {
-        return "greet";
+        return "hello";
     }
 
     @Override
@@ -25,7 +25,6 @@ public class GreetCommand implements SlashCommand {
 
         //Reply to the slash command, with the name the user supplied
         return  event.reply()
-            .withEphemeral(true)
-            .withContent("Hello, " + name);
+            .withContent("Hello, " + name + " my name is Arc-Zen, I am a bot that is still in development. How are you doing today?");
     }
 }

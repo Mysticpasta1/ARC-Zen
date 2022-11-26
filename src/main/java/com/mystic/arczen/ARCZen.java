@@ -1,18 +1,26 @@
-import com.novamaday.d4j.gradle.simplebot.listeners.SlashCommandListener;
+package com.mystic.arczen;
+
+import com.mystic.arczen.listeners.SlashCommandListener;
 import discord4j.core.DiscordClientBuilder;
 import discord4j.core.GatewayDiscordClient;
 import discord4j.core.event.domain.interaction.ChatInputInteractionEvent;
+import discord4j.core.event.domain.lifecycle.ReadyEvent;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import java.util.Arrays;
+import java.util.Collections;
 import java.util.List;
 
-public class SimpleBot {
-    private static final Logger LOGGER = LoggerFactory.getLogger(SimpleBot.class);
+public class ARCZen {
+    private static final Logger LOGGER = LoggerFactory.getLogger(ARCZen.class);
 
     public static void main(String[] args) {
         //Creates the gateway client and connects to the gateway
-        final GatewayDiscordClient client = DiscordClientBuilder.create(System.getenv("BOT_TOKEN")).build()
+        final GatewayDiscordClient client = DiscordClientBuilder.create("MTA0NjExNzIxNTUyMDQzMjIyOQ.Ghlsuc.1nvpBLCdijgXho4_z_PkDz6BhrB3bWfJ4rYrdY").build()
+            .gateway()
+            .withEventDispatcher(d -> d.on(ReadyEvent.class)
+                    .doOnNext(readyEvent -> LOGGER.info("Ready: {}", readyEvent.getShardInfo())))
             .login()
             .block();
 
@@ -21,7 +29,7 @@ public class SimpleBot {
          is overly complicated for such a simple demo and requires handling for both IDE and .jar packaging.
          Using SpringBoot we can avoid all of this and use their resource pattern matcher to do this for us.
          */
-        List<String> commands = List.of("greet.json", "ping.json");
+        List<String> commands = Collections.unmodifiableList(Arrays.asList("greet.json", "ping.json", "hello.json"));
         try {
             new GlobalCommandRegistrar(client.getRestClient()).registerCommands(commands);
         } catch (Exception e) {
@@ -32,5 +40,7 @@ public class SimpleBot {
         client.on(ChatInputInteractionEvent.class, SlashCommandListener::handle)
             .then(client.onDisconnect())
             .block(); // We use .block() as there is not another non-daemon thread and the jvm would close otherwise.
+
+        client.onDisconnect().block();
     }
 }

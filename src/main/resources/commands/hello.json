@@ -1,10 +1,10 @@
 {
-  "name": "greet",
-  "description": "Greets you",
+  "name": "hello",
+  "description": "Hello!",
   "options": [
     {
       "name": "name",
-      "description": "Your name",
+      "description": "hello i'm ARC-Zen",
       "type": 3,
       "required": true
     }

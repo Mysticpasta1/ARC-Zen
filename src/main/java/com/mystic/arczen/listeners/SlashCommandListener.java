@@ -1,6 +1,6 @@
-import com.novamaday.d4j.gradle.simplebot.commands.GreetCommand;
-import com.novamaday.d4j.gradle.simplebot.commands.PingCommand;
-import com.novamaday.d4j.gradle.simplebot.commands.SlashCommand;
+package com.mystic.arczen.listeners;
+
+import com.mystic.arczen.commands.*;
 import discord4j.core.event.domain.interaction.ChatInputInteractionEvent;
 import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
@@ -14,6 +14,7 @@ public class SlashCommandListener {
 
     static {
         //We register our commands here when the class is initialized
+        commands.add(new HelloCommand());
         commands.add(new PingCommand());
         commands.add(new GreetCommand());
     }
