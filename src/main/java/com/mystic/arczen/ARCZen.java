@@ -17,7 +17,7 @@ public class ARCZen {
 
     public static void main(String[] args) {
         //Creates the gateway client and connects to the gateway
-        final GatewayDiscordClient client = DiscordClientBuilder.create("MTA0NjExNzIxNTUyMDQzMjIyOQ.Ghlsuc.1nvpBLCdijgXho4_z_PkDz6BhrB3bWfJ4rYrdY").build()
+        final GatewayDiscordClient client = DiscordClientBuilder.create("MTA0NjExNzIxNTUyMDQzMjIyOQ.GIzERK.PMm1sdP53GCrBwM6rhYS2puwQ-Wyu7XqUofGg4").build()
             .gateway()
             .withEventDispatcher(d -> d.on(ReadyEvent.class)
                     .doOnNext(readyEvent -> LOGGER.info("Ready: {}", readyEvent.getShardInfo())))
