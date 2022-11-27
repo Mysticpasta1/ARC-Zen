@@ -1,0 +1,38 @@
+{
+    "name": "weather",
+    "description": "Gives you the weather for a given location in that unit of measurement",
+    "options": [
+        {
+          "name": "city",
+          "description": "The city you want to get the weather for",
+          "type": 3,
+          "required": true
+        },
+        {
+          "name": "country",
+          "description": "The country you want to get the weather for",
+          "type": 3,
+          "required": true
+        },
+        {
+            "name": "unit",
+            "description": "The unit of measurement you want to use",
+            "type": 3,
+            "required": true,
+            "choices": [
+                {
+                "name": "Celsius",
+                "value": "metric"
+                },
+                {
+                "name": "Fahrenheit",
+                "value": "us"
+                },
+                {
+                  "name": "UK Standard",
+                  "value": "uk"
+                }
+            ]
+        }
+    ]
+}

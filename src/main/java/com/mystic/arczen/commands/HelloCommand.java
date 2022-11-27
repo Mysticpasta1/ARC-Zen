@@ -3,7 +3,7 @@ package com.mystic.arczen.commands;
 import discord4j.core.event.domain.interaction.ChatInputInteractionEvent;
 import discord4j.core.object.command.ApplicationCommandInteractionOption;
 import discord4j.core.object.command.ApplicationCommandInteractionOptionValue;
-import reactor.core.publisher.Mono;
+import discord4j.core.spec.InteractionApplicationCommandCallbackReplyMono;
 
 public class HelloCommand implements SlashCommand {
     @Override
@@ -12,7 +12,7 @@ public class HelloCommand implements SlashCommand {
     }
 
     @Override
-    public Mono<Void> handle(ChatInputInteractionEvent event) {
+    public InteractionApplicationCommandCallbackReplyMono handle(ChatInputInteractionEvent event) {
         /*
         Since slash command options are optional according to discord, we will wrap it into the following function
         that gets the value of our option as a String without chaining several .get() on all the optional values

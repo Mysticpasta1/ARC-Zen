@@ -1,7 +1,10 @@
 package com.mystic.arczen.commands;
 
 import discord4j.core.event.domain.interaction.ChatInputInteractionEvent;
-import reactor.core.publisher.Mono;
+import discord4j.core.spec.InteractionApplicationCommandCallbackReplyMono;
+
+import java.io.IOException;
+import java.net.URISyntaxException;
 
 /**
  * A simple interface defining our slash command class contract.
@@ -12,5 +15,5 @@ public interface SlashCommand {
 
     String getName();
 
-    Mono<Void> handle(ChatInputInteractionEvent event);
+    InteractionApplicationCommandCallbackReplyMono handle(ChatInputInteractionEvent event) throws IOException, URISyntaxException;
 }

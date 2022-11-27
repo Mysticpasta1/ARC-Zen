@@ -5,10 +5,10 @@ import discord4j.core.object.command.ApplicationCommandInteractionOption;
 import discord4j.core.object.command.ApplicationCommandInteractionOptionValue;
 import discord4j.core.spec.InteractionApplicationCommandCallbackReplyMono;
 
-public class GreetCommand implements SlashCommand {
+public class DiceRollCommand implements SlashCommand {
     @Override
     public String getName() {
-        return "greet";
+        return "diceroll";
     }
 
     @Override
@@ -18,14 +18,23 @@ public class GreetCommand implements SlashCommand {
         that gets the value of our option as a String without chaining several .get() on all the optional values
         In this case, there is no fear it will return empty/null as this is marked "required: true" in our json.
          */
-        String name = event.getOption("name")
+        String user = event.getOption("user")
             .flatMap(ApplicationCommandInteractionOption::getValue)
             .map(ApplicationCommandInteractionOptionValue::asString)
             .get(); //This is warning us that we didn't check if its present, we can ignore this on required options
 
+        int sides = Integer.parseInt(event.getOption("sides")
+                .flatMap(ApplicationCommandInteractionOption::getValue)
+                .map(ApplicationCommandInteractionOptionValue::getRaw)
+                .get()); //This is warning us that we didn't check if its present, we can ignore this on required options
+
         //Reply to the slash command, with the name the user supplied
-        return  event.reply()
-            .withEphemeral(true)
-            .withContent("Hello, " + name);
+        if(sides > 2) {
+            return  event.reply()
+                .withContent("Hello, " + user + " you rolled a " + Math.round(Math.random() * sides));
+        } else {
+            return  event.reply()
+                .withContent("Hello, " + user + " you rolled a " + Math.round(Math.random() * 6));
+        }
     }
 }

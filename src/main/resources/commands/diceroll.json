@@ -1,0 +1,18 @@
+{
+  "name": "diceroll",
+  "description": "rolls a dice with the number of sides you specify",
+  "options": [
+    {
+      "name": "user",
+      "description": "the user to roll the dice for",
+      "type": 3,
+      "required": true
+    },
+    {
+      "name": "sides",
+      "description": "the number of sides of the dice",
+      "type": 3,
+      "required": true
+    }
+  ]
+}

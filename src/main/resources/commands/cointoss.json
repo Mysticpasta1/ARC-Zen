@@ -1,0 +1,12 @@
+{
+  "name": "cointoss",
+  "description": "tosses a coin for the user",
+  "options": [
+    {
+      "name": "user",
+      "description": "The user to show the coin toss too",
+      "type": 3,
+      "required": true
+    }
+  ]
+}
