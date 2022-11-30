@@ -36,9 +36,7 @@ public class SlashCommandListener {
             .flatMap(command -> {
                 try {
                     return command.handle(event);
-                } catch (IOException e) {
-                    e.printStackTrace();
-                } catch (URISyntaxException e) {
+                } catch (Exception e) {
                     e.printStackTrace();
                 }
                 return null;

@@ -57,7 +57,7 @@ public class HelpCommand implements SlashCommand {
             case "hello":
                 return "This command says hello from the bot. Usage: /hello";
             case "weather":
-                return "This command gives the weather for a given location. Usage: /weather <city> <country> <unit>";
+                return "This command gives the weather for a given location. Usage: /weather <latitude> <longitude> <tempUnit> <windUnit> <precipUnit> <timeFormat> <timezoneCity> <timezoneCountry>";
             default:
                 return "Command not found.";
         }

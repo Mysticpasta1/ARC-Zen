@@ -2,37 +2,185 @@
     "name": "weather",
     "description": "Gives you the weather for a given location in that unit of measurement",
     "options": [
-        {
-          "name": "city",
-          "description": "The city you want to get the weather for",
-          "type": 3,
-          "required": true
-        },
-        {
-          "name": "country",
-          "description": "The country you want to get the weather for",
-          "type": 3,
-          "required": true
-        },
-        {
-            "name": "unit",
-            "description": "The unit of measurement you want to use",
-            "type": 3,
-            "required": true,
-            "choices": [
-                {
-                "name": "Celsius",
-                "value": "metric"
-                },
-                {
-                "name": "Fahrenheit",
-                "value": "us"
-                },
-                {
-                  "name": "UK Standard",
-                  "value": "uk"
-                }
-            ]
-        }
+      {
+        "name": "latitude",
+        "description": "The latitude of the location",
+        "type": 10,
+        "required": true
+      },
+      {
+        "name": "longitude",
+        "description": "The longitude of the location",
+        "type": 10,
+        "required": true
+      },
+      {
+        "name": "temp_unit",
+        "description": "The unit of measurement for temperature",
+        "type": 3,
+        "required": true,
+        "choices": [
+          {
+            "name": "Celsius",
+            "value": "celsius"
+          },
+          {
+            "name": "Fahrenheit",
+            "value": "fahrenheit"
+          }
+        ]
+      },
+      {
+        "name": "wind_unit",
+        "description": "The unit of measurement for wind speed",
+        "type": 3,
+        "required": true,
+        "choices": [
+          {
+            "name": "Kilometers per hour",
+            "value": "kmh"
+          },
+          {
+            "name": "Miles per hour",
+            "value": "mph"
+          },
+          {
+            "name": "Meters per second",
+            "value": "ms"
+          },
+          {
+              "name": "Knots",
+              "value": "kn"
+          }
+        ]
+      },
+      {
+        "name": "precip_unit",
+        "description": "The unit of measurement for precipitation",
+        "type": 3,
+        "required": true,
+        "choices": [
+          {
+            "name": "Millimeters",
+            "value": "mm"
+          },
+          {
+            "name": "Inches",
+            "value": "inch"
+          }
+        ]
+      },
+      {
+        "name": "time_format",
+        "description": "The format for the time",
+        "type": 3,
+        "required": true,
+        "choices": [
+          {
+            "name": "Unix Time",
+            "value": "unixtime"
+          },
+          {
+            "name": "ISO 8601",
+            "value": "iso8601"
+          }
+        ]
+      },
+      {
+        "name": "timezone_city",
+        "description": "The city to use for timezone",
+        "type": 3,
+        "required": true,
+        "choices": [
+          {
+            "name": "Auckland",
+            "value": "Auckland"
+          },
+          {
+            "name": "Sydney",
+            "value": "Sydney"
+          },
+          {
+            "name": "Tokyo",
+            "value": "Tokyo"
+          },
+          {
+            "name": "New York",
+            "value": "New_York"
+          },
+          {
+            "name": "Singapore",
+            "value": "Singapore"
+          },
+          {
+            "name": "Bangkok",
+            "value": "Bangkok"
+          },
+          {
+            "name": "Cairo",
+            "value": "Cairo"
+          },
+          {
+            "name": "Moscow",
+            "value": "Moscow"
+          },
+          {
+            "name": "Berlin",
+            "value": "Berlin"
+          },
+          {
+            "name": "London",
+            "value": "London"
+          },
+          {
+            "name": "Sao Paulo",
+            "value": "Sao_Paulo"
+          },
+          {
+            "name": "Los Angeles",
+            "value": "Los_Angeles"
+          },
+          {
+            "name": "Chicago",
+            "value": "Chicago"
+          },
+          {
+            "name": "Denver",
+            "value": "Denver"
+          }
+        ]
+      },
+      {
+        "name": "timezone_country",
+        "description": "The country to use for timezone",
+        "type": 3,
+        "required": true,
+        "choices": [
+          {
+            "name": "America",
+            "value": "America"
+          },
+          {
+            "name": "Europe",
+            "value": "Europe"
+          },
+          {
+            "name": "Asia",
+            "value": "Asia"
+          },
+          {
+            "name": "Australia",
+            "value": "Australia"
+          },
+          {
+            "name": "Africa",
+            "value": "Africa"
+          },
+          {
+            "name": "Pacific",
+            "value": "Pacific"
+          }
+        ]
+      }
     ]
 }

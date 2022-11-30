@@ -1,0 +1,78 @@
+plugins {
+    id("com.github.johnrengelman.shadow") version ("7.0.0")
+    id 'org.jetbrains.kotlin.jvm' version '1.7.10'
+    id 'java-library'
+    id 'maven-publish'
+    id "org.openjfx.javafxplugin" version "0.0.13"
+}
+
+group = "com.mystic.arczen"
+version = "2022.11.29"
+
+
+repositories {
+    google()
+    mavenCentral()
+    maven {
+        url ("https://jitpack.io")
+    }
+    maven {
+        url ("https://maven.icm.edu.pl/artifactory/repo/")
+    }
+}
+
+javafx {
+    version = "19"
+    modules = [ 'javafx.controls', 'javafx.fxml' ]
+}
+
+dependencies {
+    implementation("com.discord4j:discord4j-core:3.2.0")
+    implementation("ch.qos.logback:logback-classic:1.2.3")
+    implementation("org.apache.httpcomponents:httpclient:4.5.13")
+    implementation("org.json:json:20220924")
+    implementation 'com.github.open-meteo:open-meteo-api-kotlin:451578b1be'
+    implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk8"
+    implementation 'org.apache.poi:poi:4.0.1'
+    implementation("org.apache.poi:poi-ooxml:4.0.1")
+    implementation 'commons-fileupload:commons-fileupload:1.4'
+    implementation 'com.google.api-client:google-api-client:2.0.1'
+    implementation 'org.testng:testng:7.6.1'
+    implementation 'com.itextpdf:itext7-core:7.2.4'
+    implementation 'com.dropbox.core:dropbox-core-sdk:5.4.4'
+}
+
+java {
+    withSourcesJar()
+    withJavadocJar()
+}
+
+publishing {
+    publications {
+        maven(MavenPublication) {
+            from components.java
+        }
+    }
+}
+
+/*
+Configure the sun.tools.jar.resources.jar task for our main class and so that `./gradlew build` always makes the fatjar
+This boilerplate is completely removed when using Springboot
+ */
+tasks.jar {
+    manifest {
+        attributes("Main-Class": "com.mystic.arczen.ARCZen")
+    }
+
+    finalizedBy("shadowJar")
+}
+compileKotlin {
+    kotlinOptions {
+        jvmTarget = "19"
+    }
+}
+compileTestKotlin {
+    kotlinOptions {
+        jvmTarget = "19"
+    }
+}

@@ -15,5 +15,5 @@ public interface SlashCommand {
 
     String getName();
 
-    InteractionApplicationCommandCallbackReplyMono handle(ChatInputInteractionEvent event) throws IOException, URISyntaxException;
+    InteractionApplicationCommandCallbackReplyMono handle(ChatInputInteractionEvent event) throws Exception;
 }
